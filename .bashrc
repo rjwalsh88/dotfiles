@@ -193,4 +193,4 @@ eval "`dircolors -b $DIR_COLORS`"
 alias emacs='emacs -nw'
 
 
-cd zanbato/zanbato
+cd zanbato
