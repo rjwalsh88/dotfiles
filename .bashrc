@@ -142,8 +142,50 @@ if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
 fi
 
 # Keychain
-/usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/$HOSTNAME-sh
+#/usr/bin/keychain $HOME/.ssh/id_rsa
+#source $HOME/.keychain/$HOSTNAME-sh
+
+
+
+#---------------------
+# SSH keychain
+#----------------------
+
+# keys to use
+CERTFILES=" keyname keyname2 "
+
+# find the keychain script
+KEYCHAIN=
+[ -x /usr/bin/keychain  ] && KEYCHAIN=/usr/bin/keychain
+[ -x ~/usr/bin/keychain  ] && KEYCHAIN=~/usr/bin/keychain
+[ -x ~/bin/keychain  ] && KEYCHAIN=~/bin/keychain
+
+HOSTNAME=`hostname`
+if [ -n $KEYCHAIN ] ; then
+#
+# If there's already a ssh-agent running, then we know we're on a desktop or laptop (i.e. a client),
+# so we should run keychain so that we can set up our keys, please.
+#
+    if [ ! "" = "$SSH_AGENT_PID" ]; then
+
+        echo "Keychain: SSH_AGENT_PID is set, so running keychain to load keys."
+        $KEYCHAIN $CERTFILES && source ~/.keychain/$HOSTNAME-sh
+
+# Else no ssh-agent configured
+    else
+
+#
+#  Offer to run keychain only if no SSH_AUTH_SOCK is set, and# only if we aren't at the end of a ssh connection with agent# forwarding enabled (since then we won't need ssh-agent here anyway)
+#
+       if [ -z $SSH_AUTH_SOCK ]; then
+           echo "Keychain: Found no SSH_AUTH_SOCK, so running keychain to start ssh-agent & load keys."
+           $KEYCHAIN $CERTFILES && source ~/.keychain/$HOSTNAME-sh
+       fi
+    fi
+fi
+unset CERTFILES KEYCHAIN
+
+
 
 # Colors
 [ -e "$HOME/.dircolors" ] && DIR_COLORS="$HOME/.dircolors"
@@ -153,4 +195,4 @@ eval "`dircolors -b $DIR_COLORS`"
 alias emacs='emacs -nw'
 
 
-cd zanbato/zanbato
+cd zanbato
