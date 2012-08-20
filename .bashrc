@@ -91,6 +91,8 @@ alias l='ls -CF'
 alias ld='ll | grep ^d'
 alias ..='cd ..'
 
+alias ssh='ssh -A' # agents
+
 # speed up grep
 alias grep='grep --color=auto --exclude=*tmp --exclude=*.pyc --exclude=#* --exclude=*~ --exclude=*.json --exclude-dir=migrations --exclude-dir=img_upload --exclude-dir=logs'
 alias egrep='egrep --color=auto --exclude=*tmp --exclude=*.pyc --exclude=#* --exclude=*~ --exclude=*.json --exclude-dir=migrations --exclude-dir=img_upload --exclude-dir=logs'
