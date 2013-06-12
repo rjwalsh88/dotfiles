@@ -21,3 +21,4 @@
 
 (require 'git)
 (require 'git-blame)
+(load "~/.emacs.d/less-css-mode.el")
