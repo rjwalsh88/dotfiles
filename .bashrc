@@ -94,8 +94,7 @@ alias ..='cd ..'
 alias ssh='ssh -A' # agents
 
 # speed up grep
-alias grep='grep --color=auto --exclude=*tmp --exclude=*.pyc --exclude=#* --exclude=*~ --exclude=*.json --exclude-dir=migrations --exclude-dir=img_upload --exclude-dir=logs'
-alias egrep='egrep --color=auto --exclude=*tmp --exclude=*.pyc --exclude=#* --exclude=*~ --exclude=*.json --exclude-dir=migrations --exclude-dir=img_upload --exclude-dir=logs'
+export GREP_OPTIONS='--color=auto --exclude=*tmp --exclude=*.pyc --exclude=#* --exclude=*~ --exclude=*.json --exclude-dir=migrations --exclude-dir=img_upload --exclude-dir=logs --exclude-dir=oldmigrations'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -196,4 +195,8 @@ eval "`dircolors -b $DIR_COLORS`"
 alias emacs='emacs -nw'
 
 
-cd zanbato
+source /usr/local/bin/virtualenvwrapper.sh
+
+if [ -f ~/.bashrc_local ]; then
+    . .bashrc_local
+fi
