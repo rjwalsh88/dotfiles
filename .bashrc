@@ -190,13 +190,13 @@ unset CERTFILES KEYCHAIN
 # Colors
 [ -e "$HOME/.dircolors" ] && DIR_COLORS="$HOME/.dircolors"
 [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-eval "`dircolors -b $DIR_COLORS`"
+[ -e "/usr/bin/dircolors" ] && eval "`dircolors -b $DIR_COLORS`"
 
 alias emacs='emacs -nw'
 
 
-source /usr/local/bin/virtualenvwrapper.sh
+[ -e "/usr/local/bin/virtualenvwrapper.sh" ] && source /usr/local/bin/virtualenvwrapper.sh
 
 if [ -f ~/.bashrc_local ]; then
-    . .bashrc_local
+    . ~/.bashrc_local
 fi
