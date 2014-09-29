@@ -109,12 +109,6 @@ alias remove='sudo apt-get remove'
 alias upgrade='sudo apt-get upgrade'
 alias update='sudo apt-get update'
 
-# Deprecated: Quick Mysql
-alias mysql='mysql -u root --password=5440dollars zanbato'
-alias mysqlsok='/usr/bin/mysql -u root --password=5440dollars sokoni'
-alias mysqldump='mysqldump -u root --password=5440dollars zanbato'
-alias mysqldumpsok='/usr/bin/mysqldump -u root --password=5440dollars sokoni'
-
 # GITRDONE
 alias gs='git status'
 alias gpl='git pull --rebase'
@@ -126,12 +120,9 @@ alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset 
 alias pep8='pep8  --exclude=migrations --ignore=E501 --repeat .'
 alias pylint='pylint --rcfile=pylint.rc'
 
-alias zb-prod='ssh zanbatogroup@zanbatogroup.webfactional.com'
-alias psql='psql -U zanbato'
 alias rhino='java -jar ~/rhino1_7R3/js.jar'
 alias csslint='rhino ~/csslint-rhino.js'
 
-export PYTHONPATH=$PYTHONPATH:~/zanbato/:~/python-profiler-2.6.5/2.6/
 export EDITOR=emacs
 
 SSHAGENT=/usr/bin/ssh-agent
@@ -144,8 +135,6 @@ fi
 # Keychain
 #/usr/bin/keychain $HOME/.ssh/id_rsa
 #source $HOME/.keychain/$HOSTNAME-sh
-
-
 
 #---------------------
 # SSH keychain
@@ -185,8 +174,6 @@ if [ -n $KEYCHAIN ] ; then
 fi
 unset CERTFILES KEYCHAIN
 
-
-
 # Colors
 [ -e "$HOME/.dircolors" ] && DIR_COLORS="$HOME/.dircolors"
 [ -e "$DIR_COLORS" ] || DIR_COLORS=""
@@ -194,9 +181,12 @@ unset CERTFILES KEYCHAIN
 
 alias emacs='emacs -nw'
 
-
 [ -e "/usr/local/bin/virtualenvwrapper.sh" ] && source /usr/local/bin/virtualenvwrapper.sh
 
 if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
 fi
+
+PATH=$PATH:~/bin
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
