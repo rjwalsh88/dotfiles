@@ -116,6 +116,8 @@ alias gps='git push'
 alias gcam='git commit -am'
 alias go='git checkout'
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'
+alias glgb='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --branches'
+alias delmerged='git checkout develop && git branch --merged | grep -v \* | grep -v master | grep -v develop | xargs git branch -d && git remote prune origin'
 
 alias pep8='pep8  --exclude=migrations --ignore=E501 --repeat .'
 alias pylint='pylint --rcfile=pylint.rc'
