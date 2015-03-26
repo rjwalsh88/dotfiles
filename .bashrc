@@ -183,8 +183,6 @@ unset CERTFILES KEYCHAIN
 
 alias emacs='emacs -nw'
 
-[ -e "/usr/local/bin/virtualenvwrapper.sh" ] && source /usr/local/bin/virtualenvwrapper.sh
-
 if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
 fi
