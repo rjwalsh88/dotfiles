@@ -15,3 +15,5 @@ Public
 .Trash
 .bash_profile
 .profile
+.lein-failures
+*
