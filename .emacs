@@ -1,5 +1,5 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 ;(require 'ruby-mode)
 ;(add-to-list 'auto-mode-alist               '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\)\\'" . ruby-mode))
 ;(add-to-list 'auto-mode-alist               '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . ruby-mode))
@@ -28,4 +28,3 @@
 
 ;(setq split-height-threshold nil)
 ;(setq split-width-threshold 0)
-

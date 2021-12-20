@@ -185,9 +185,12 @@ unset CERTFILES KEYCHAIN
 
 alias emacs='emacs -nw'
 
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
 fi
 
 PATH=$PATH:~/bin
-
